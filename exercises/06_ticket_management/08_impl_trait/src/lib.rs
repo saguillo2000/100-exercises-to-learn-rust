@@ -33,6 +33,12 @@ impl TicketStore {
     }
 }
 
+impl TicketStore {
+    pub fn in_progress(&self) -> impl Iterator<Item = &Ticket> {
+        self.tickets.iter().filter(|ticket| ticket.status == Status::InProgress)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

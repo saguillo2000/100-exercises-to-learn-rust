@@ -33,6 +33,16 @@ impl TicketStore {
     }
 }
 
+impl TicketStore {
+    pub fn to_dos(&self) -> Vec<&Ticket> {
+        self.tickets
+            .iter()
+            .filter(|ticket| ticket.status == Status::ToDo)
+            .collect()
+    }
+    
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
